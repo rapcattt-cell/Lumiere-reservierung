@@ -8,8 +8,8 @@
  *   • DE/EN-Umschaltung & Dark/Light-Theme
  * ========================================================================== */
 
-import { RESTAURANT, SETTINGS, SEED_RESERVATIONS } from "./data.js?v=9";
-import * as api from "./api.js?v=9";
+import { RESTAURANT, SETTINGS, SEED_RESERVATIONS } from "./data.js?v=10";
+import * as api from "./api.js?v=10";
 
 /* ---------------------------------------------------------------------------
  * 1) Internationalisierung (DE/EN)
@@ -50,7 +50,10 @@ const I18N = {
     "err.required": "Bitte ausfüllen.",
     "err.email": "Bitte gültige E-Mail eingeben.",
     "err.gdpr": "Zustimmung erforderlich.",
+    "g.gdpr.read": "Datenschutzerklärung lesen",
     "foot.proto": "Prototyp — Gast-Reservierung gegen die echte API; bei fehlendem Backend lokale Demo-Daten.",
+    "foot.impressum": "Impressum",
+    "foot.datenschutz": "Datenschutz",
     "slots.loading": "Lade Verfügbarkeit …",
     "err.slotGone": "Dieser Zeitpunkt wurde gerade vergeben. Bitte wählen Sie eine andere Uhrzeit.",
     "err.submit": "Reservierung fehlgeschlagen. Bitte erneut versuchen.",
@@ -95,7 +98,10 @@ const I18N = {
     "err.required": "Required.",
     "err.email": "Please enter a valid email.",
     "err.gdpr": "Consent required.",
+    "g.gdpr.read": "Read privacy policy",
     "foot.proto": "Prototype — guest booking against the real API; falls back to local demo data if the backend is down.",
+    "foot.impressum": "Imprint",
+    "foot.datenschutz": "Privacy",
     "slots.loading": "Loading availability …",
     "err.slotGone": "This time was just taken. Please choose another time.",
     "err.submit": "Reservation failed. Please try again.",

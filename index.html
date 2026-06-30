@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="styles.css?v=10" />
 </head>
 <body>
   <!-- Header -->
@@ -106,8 +106,11 @@
             </div>
             <div class="field full gdpr">
               <input id="gdpr" name="gdpr" type="checkbox" />
-              <label for="gdpr" data-i18n="g.gdpr">Ich stimme der Verarbeitung meiner Daten gemäß Datenschutzerklärung zu.</label>
-              <span class="err"></span>
+              <div class="gdpr-text">
+                <label for="gdpr" data-i18n="g.gdpr">Ich stimme der Verarbeitung meiner Daten gemäß Datenschutzerklärung zu.</label>
+                <a class="gdpr-link" href="datenschutz.html" target="_blank" rel="noopener" data-i18n="g.gdpr.read">Datenschutzerklärung lesen</a>
+                <span class="err"></span>
+              </div>
             </div>
           </div>
 
@@ -141,10 +144,14 @@
 
   <footer class="foot">
     <p data-i18n="foot.proto">Prototyp — Gast-Reservierung gegen die echte API; bei fehlendem Backend lokale Demo-Daten.</p>
+    <nav class="foot-links">
+      <a href="impressum.html" data-i18n="foot.impressum">Impressum</a>
+      <a href="datenschutz.html" data-i18n="foot.datenschutz">Datenschutz</a>
+    </nav>
   </footer>
 
   <div id="notice" class="notice" role="status" aria-live="polite"></div>
 
-  <script type="module" src="app.js?v=9"></script>
+  <script type="module" src="app.js?v=10"></script>
 </body>
 </html>

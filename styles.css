@@ -412,6 +412,83 @@ input[type="date"]:focus { outline: 2px solid var(--gold); outline-offset: 1px; 
   font-size: .78rem;
 }
 
+/* --- Footer-Links (Impressum / Datenschutz) ------------------------------- */
+.foot-links {
+  margin: 6px 0 0;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.foot-links a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color .2s var(--ease), border-color .2s var(--ease);
+}
+.foot-links a:hover { color: var(--gold); border-bottom-color: var(--gold-soft); }
+
+/* DSGVO-Link an der Checkbox */
+.gdpr-text { display: flex; flex-direction: column; }
+.gdpr-link {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: .82rem;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.gdpr-link:hover { border-bottom-color: var(--gold-soft); }
+
+/* --- Rechtstexte (Impressum / Datenschutz) -------------------------------- */
+.legal {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 14px 20px 64px;
+  color: var(--ink);
+}
+.legal h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  margin: 18px 0 6px;
+}
+.legal h2 {
+  font-size: 1.05rem;
+  margin: 30px 0 8px;
+  color: var(--ink);
+}
+.legal p, .legal li { color: var(--ink-soft); }
+.legal p { margin: 0 0 12px; }
+.legal ul { margin: 0 0 12px; padding-left: 1.25rem; }
+.legal li { margin: 4px 0; }
+.legal a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-soft); }
+.legal a:hover { color: var(--gold-soft); }
+.legal code {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1px 6px;
+  font-size: .85em;
+  color: var(--ink);
+}
+.legal-draft {
+  background: var(--surface-2);
+  border: 1px solid var(--gold-soft);
+  border-left: 4px solid var(--gold);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-size: .88rem;
+  color: var(--ink-soft) !important;
+  margin: 8px 0 8px;
+}
+.legal-draft code { background: var(--surface); }
+.legal-foot {
+  margin-top: 34px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: .9rem;
+}
+
 /* --- Reduced motion ------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto; }
