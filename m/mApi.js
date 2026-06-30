@@ -3,7 +3,7 @@
  * Gleiche Logik wie das Desktop-Dashboard; teilt sich die Session (gleiche Origin).
  * ========================================================================== */
 
-export const API_BASE = location.port === "4000" ? "/api" : `http://${location.hostname || "127.0.0.1"}:4000/api`;
+export const API_BASE = "/api";
 
 const LS = { access: "admin-access", refresh: "admin-refresh", user: "admin-user" };
 
