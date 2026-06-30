@@ -2,7 +2,7 @@
  * m.js — Mobile Verwalter-App (Login, Heute, Tisch-Zuweisung, Einstellungen)
  * Spricht dieselbe REST-API wie das Desktop-Dashboard.
  * ========================================================================== */
-import { api, login, logout, getUser, isLoggedIn } from "./mApi.js?v=1";
+import { api, login, logout, getUser, isLoggedIn } from "./mApi.js?v=3";
 
 /* --------------------------------- Helfer --------------------------------- */
 const $ = (s, r = document) => r.querySelector(s);

@@ -3,7 +3,8 @@
  * ========================================================================== */
 
 :root {
-  --gold: #c9a96a;
+  /* Taklamakan-Akzent (Smaragd) — Token-Name bleibt aus Kompatibilität */
+  --gold: #1d9e75;
   --radius: 14px;
   --radius-sm: 10px;
   --ease: cubic-bezier(.4, 0, .2, 1);
@@ -12,12 +13,12 @@
   font-family: "Inter", system-ui, -apple-system, sans-serif;
 }
 :root[data-theme="light"] {
-  --bg:#f3f0ea; --surface:#fff; --surface-2:#faf8f3; --line:#e7e0d4;
-  --ink:#20231f; --ink-soft:#5f6358; --ink-faint:#8c8f84; --accent-ink:#1d1a12;
+  --bg:#f4f8f5; --surface:#fff; --surface-2:#eff6f2; --line:#dce9e3;
+  --ink:#10241f; --ink-soft:#51665e; --ink-faint:#8aa097; --accent-ink:#062a22;
 }
 :root[data-theme="dark"] {
-  --bg:#121110; --surface:#1c1a16; --surface-2:#232019; --line:#322e25;
-  --ink:#f1ede4; --ink-soft:#b3ac9c; --ink-faint:#847d6e; --accent-ink:#1d1a12;
+  --bg:#07241f; --surface:#0e3329; --surface-2:#103a2f; --line:#1e4b3f;
+  --ink:#eaf5ef; --ink-soft:#a7c4b8; --ink-faint:#6e8b80; --accent-ink:#062a22;
   --shadow:0 24px 70px -24px rgba(0,0,0,.7);
 }
 * { box-sizing: border-box; }

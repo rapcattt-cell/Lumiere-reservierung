@@ -3,6 +3,7 @@
  * Gleiche Logik wie das Desktop-Dashboard; teilt sich die Session (gleiche Origin).
  * ========================================================================== */
 
+// API immer gleiche Origin (Backend liefert Frontend aus) → relativ, lokal & live.
 export const API_BASE = "/api";
 
 const LS = { access: "admin-access", refresh: "admin-refresh", user: "admin-user" };

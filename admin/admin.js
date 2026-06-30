@@ -3,7 +3,7 @@
  * Spricht ausschließlich die REST-API an (adminApi.js). Kein Build-Step.
  * ========================================================================== */
 
-import { api, login, logout, getUser, isLoggedIn, API_BASE } from "./adminApi.js?v=7";
+import { api, login, logout, getUser, isLoggedIn, API_BASE } from "./adminApi.js?v=9";
 
 /* ---------------------------------- Helfer -------------------------------- */
 const $ = (s, r = document) => r.querySelector(s);

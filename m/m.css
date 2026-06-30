@@ -2,8 +2,8 @@
  * m.css — Mobile Verwalter-App (Touch-first, installierbare PWA)
  * ========================================================================== */
 :root {
-  --gold:#c9a96a; --bg:#14130f; --surface:#1d1b16; --surface2:#232019;
-  --line:#322e25; --ink:#f1ede4; --soft:#b3ac9c; --faint:#847d6e; --accent-ink:#1d1a12;
+  --gold:#1d9e75; --bg:#07241f; --surface:#0e3329; --surface2:#103a2f;
+  --line:#1e4b3f; --ink:#eaf5ef; --soft:#a7c4b8; --faint:#6e8b80; --accent-ink:#062a22;
   --radius:16px; --r-sm:11px; --ease:cubic-bezier(.4,0,.2,1);
   --safe-b:env(safe-area-inset-bottom,0px);
   font-family:"Inter",system-ui,-apple-system,sans-serif;

@@ -5,7 +5,8 @@
  * api(path,opts) hängt den Access-Token an und erneuert ihn bei 401 einmalig.
  * ========================================================================== */
 
-// Vom Backend ausgeliefert (Port 4000) → relativer Pfad; sonst Cross-Origin auf 4000.
+// API immer auf gleicher Origin (Backend liefert das Frontend aus) →
+// relativer Pfad funktioniert lokal UND live (HTTPS/Render).
 export const API_BASE = "/api";
 
 const LS = { access: "admin-access", refresh: "admin-refresh", user: "admin-user" };
