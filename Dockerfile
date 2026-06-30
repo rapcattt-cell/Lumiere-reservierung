@@ -6,7 +6,8 @@ FROM node:24-alpine
 WORKDIR /app
 
 # Frontend (wird vom Backend statisch ausgeliefert)
-COPY index.html styles.css app.js api.js data.js impressum.html datenschutz.html ./
+COPY index.html styles.css app.js api.js data.js impressum.html datenschutz.html fonts.css ./
+COPY fonts ./fonts
 COPY admin ./admin
 COPY m ./m
 

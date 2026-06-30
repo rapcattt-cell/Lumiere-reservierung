@@ -25,8 +25,9 @@ export function createApp() {
         directives: {
           defaultSrc: ["'self'"],
           scriptSrc: ["'self'", "'unsafe-inline'"],
-          styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-          fontSrc: ["'self'", "https://fonts.gstatic.com"],
+          // Schriften werden lokal selbst gehostet (fonts.css + /fonts) → kein Google nötig.
+          styleSrc: ["'self'", "'unsafe-inline'"],
+          fontSrc: ["'self'"],
           imgSrc: ["'self'", "data:"],
           connectSrc: ["'self'"],
           // NICHT erzwingen: würde auf http://localhost alle Ressourcen auf https
@@ -43,8 +44,12 @@ export function createApp() {
         // Entwicklung: jede lokale Herkunft erlauben (auch file:// → Origin "null"),
         // damit der Login funktioniert, egal wie das Frontend geöffnet wird.
         if (config.env !== "production") return cb(null, true);
-        // Produktion: nur explizit erlaubte Origins (oder Requests ohne Origin, z. B. curl).
+        // Produktion: erlaubte Origins bekommen CORS-Header.
         if (!origin || config.corsOrigins.includes(origin)) return cb(null, true);
+        // Unbekannte Origin: KEINEN Fehler werfen (würde 500 geben), sondern nur
+        // keine CORS-Header setzen. Same-Origin (Frontend wird vom Backend selbst
+        // ausgeliefert) funktioniert dadurch immer; echte Cross-Origin-Lesezugriffe
+        // blockt der Browser weiterhin selbst.
         cb(null, false);
       },
       credentials: true,
