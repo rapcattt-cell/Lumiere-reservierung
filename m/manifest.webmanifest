@@ -1,13 +1,13 @@
 {
-  "name": "Lumière Verwaltung",
-  "short_name": "Lumière",
+  "name": "Taklamakan Verwaltung",
+  "short_name": "Taklamakan",
   "description": "Reservierungen verwalten und Tische zuweisen",
   "start_url": "/m/",
   "scope": "/m/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#14130f",
-  "theme_color": "#14130f",
+  "background_color": "#07241F",
+  "theme_color": "#07241F",
   "icons": [
     { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
     { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }

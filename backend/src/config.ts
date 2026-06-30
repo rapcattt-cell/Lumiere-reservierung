@@ -34,6 +34,6 @@ export const config = {
     from: process.env.MAIL_FROM ?? process.env.SMTP_USER ?? "",
     // Postfach des Restaurants für die Benachrichtigung pro Buchung (leer = keine).
     notifyTo: process.env.RESTAURANT_NOTIFY_EMAIL ?? "",
-    restaurantName: process.env.RESTAURANT_NAME ?? "Lumière",
+    restaurantName: process.env.RESTAURANT_NAME ?? "Taklamakan",
   },
 };

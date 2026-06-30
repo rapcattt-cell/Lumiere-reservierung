@@ -11,10 +11,10 @@
 
 /* --- Restaurant-Stammdaten (Demo-Restaurant) ------------------------------ */
 export const RESTAURANT = {
-  name: "Lumière",
-  tagline: { de: "Feine Küche · Tischreservierung", en: "Fine dining · Table reservations" },
-  address: "Maximilianstraße 1, 80539 München",
-  phone: "+49 89 000 000",
+  name: "Taklamakan",
+  tagline: { de: "Restaurant · Tischreservierung", en: "Restaurant · Table reservations" },
+  address: "Isartorplatz 4, 80331 München",
+  phone: "+49 89 95 86 66 86",
 };
 
 /* --- Restaurant Settings (entspricht Tabelle „Restaurant Settings") -------

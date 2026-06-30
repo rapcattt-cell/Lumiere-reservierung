@@ -5,8 +5,9 @@
 
 /* --- Design-Tokens -------------------------------------------------------- */
 :root {
-  --gold: #c9a96a;
-  --gold-soft: #e3cfa3;
+  /* Taklamakan-Akzent (Smaragd/Mint) — Token-Namen bleiben aus Kompatibilität */
+  --gold: #1d9e75;
+  --gold-soft: #5dcaa5;
   --radius: 16px;
   --radius-sm: 10px;
   --shadow: 0 20px 60px -20px rgba(0, 0, 0, .35);
@@ -18,34 +19,34 @@
 
 /* Light (default) */
 :root[data-theme="light"] {
-  --bg: #f6f3ee;
-  --bg-grad-1: #efe9df;
-  --bg-grad-2: #f8f5f0;
+  --bg: #f4f8f5;
+  --bg-grad-1: #e3f1ea;
+  --bg-grad-2: #f4f8f5;
   --surface: #ffffff;
-  --surface-2: #faf7f2;
-  --line: #e7e0d4;
-  --ink: #20231f;
-  --ink-soft: #5f6358;
-  --ink-faint: #8c8f84;
-  --accent-ink: #1d1a12;
+  --surface-2: #eff6f2;
+  --line: #dce9e3;
+  --ink: #10241f;
+  --ink-soft: #51665e;
+  --ink-faint: #8aa097;
+  --accent-ink: #062a22;
   --chip-bg: #ffffff;
-  --chip-line: #e2dac9;
+  --chip-line: #d6e6de;
 }
 
 /* Dark */
 :root[data-theme="dark"] {
-  --bg: #14130f;
-  --bg-grad-1: #1a1813;
-  --bg-grad-2: #100f0c;
-  --surface: #1d1b16;
-  --surface-2: #232019;
-  --line: #322e25;
-  --ink: #f1ede4;
-  --ink-soft: #b3ac9c;
-  --ink-faint: #847d6e;
-  --accent-ink: #1d1a12;
-  --chip-bg: #232019;
-  --chip-line: #3a352a;
+  --bg: #07241f;
+  --bg-grad-1: #0c4a3e;
+  --bg-grad-2: #051915;
+  --surface: #0e3329;
+  --surface-2: #103a2f;
+  --line: #1e4b3f;
+  --ink: #eaf5ef;
+  --ink-soft: #a7c4b8;
+  --ink-faint: #6e8b80;
+  --accent-ink: #062a22;
+  --chip-bg: #103a2f;
+  --chip-line: #1e4b3f;
   --shadow: 0 24px 70px -24px rgba(0, 0, 0, .7);
 }
 

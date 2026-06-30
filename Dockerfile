@@ -6,9 +6,10 @@ FROM node:24-alpine
 WORKDIR /app
 
 # Frontend (wird vom Backend statisch ausgeliefert)
-COPY index.html styles.css app.js api.js data.js ./
+COPY index.html styles.css app.js api.js data.js impressum.html datenschutz.html ./
 COPY admin ./admin
 COPY m ./m
+
 # Backend
 WORKDIR /app/backend
 COPY backend/package*.json ./
