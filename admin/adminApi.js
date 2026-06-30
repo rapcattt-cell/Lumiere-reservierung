@@ -6,7 +6,7 @@
  * ========================================================================== */
 
 // Vom Backend ausgeliefert (Port 4000) → relativer Pfad; sonst Cross-Origin auf 4000.
-export const API_BASE = location.port === "4000" ? "/api" : `http://${location.hostname || "127.0.0.1"}:4000/api`;
+export const API_BASE = "/api";
 
 const LS = { access: "admin-access", refresh: "admin-refresh", user: "admin-user" };
 
