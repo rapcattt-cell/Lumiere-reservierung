@@ -8,8 +8,8 @@
  *   • DE/EN-Umschaltung & Dark/Light-Theme
  * ========================================================================== */
 
-import { RESTAURANT, SETTINGS, SEED_RESERVATIONS } from "./data.js?v=7";
-import * as api from "./api.js?v=7";
+import { RESTAURANT, SETTINGS, SEED_RESERVATIONS } from "./data.js?v=8";
+import * as api from "./api.js?v=8";
 
 /* ---------------------------------------------------------------------------
  * 1) Internationalisierung (DE/EN)
