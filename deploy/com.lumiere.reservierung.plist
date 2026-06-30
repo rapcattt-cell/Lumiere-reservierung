@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.lumiere.reservierung</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/rapcatt/Desktop/CLAUDE/reservierung/start.sh</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/rapcatt/Desktop/CLAUDE/reservierung</string>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>StandardOutPath</key>
+  <string>/tmp/lumiere-reservierung.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/lumiere-reservierung.err</string>
+</dict>
+</plist>

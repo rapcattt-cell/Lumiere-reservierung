@@ -1,0 +1,6 @@
+# Caddy besorgt automatisch ein gültiges HTTPS-Zertifikat (Let's Encrypt)
+# und leitet auf die App weiter. {$DOMAIN} kommt aus der Umgebung.
+{$DOMAIN} {
+    encode gzip
+    reverse_proxy app:4000
+}

@@ -1,0 +1,27 @@
+# Selbst-Hosting in einem Container. SQLite-Daten liegen in einem Volume
+# (überleben Neustarts/Updates). Für mehrere Standorte/hohe Last später auf
+# PostgreSQL umstellen (siehe BETRIEB.md → "Auf PostgreSQL umstellen").
+
+services:
+  app:
+    build: .
+    image: lumiere-reservierung
+    ports:
+      - "4000:4000"
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      DATABASE_URL: "file:./prisma/dev.db"
+      # WICHTIG: für dein Deployment eigene Werte setzen (openssl rand -hex 32):
+      JWT_ACCESS_SECRET: "${JWT_ACCESS_SECRET:?bitte in .env oder Umgebung setzen}"
+      JWT_REFRESH_SECRET: "${JWT_REFRESH_SECRET:?bitte in .env oder Umgebung setzen}"
+      ACCESS_TOKEN_TTL: "15m"
+      REFRESH_TOKEN_TTL: "7d"
+      SEED_ADMIN_EMAIL: "${SEED_ADMIN_EMAIL:-admin@lumiere.test}"
+      SEED_ADMIN_PASSWORD: "${SEED_ADMIN_PASSWORD:-admin1234}"
+    volumes:
+      - reservierung-data:/app/backend/prisma
+    restart: unless-stopped
+
+volumes:
+  reservierung-data:

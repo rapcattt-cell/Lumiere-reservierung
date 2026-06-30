@@ -1,0 +1,79 @@
+// Prisma-Schema — Restaurant-Reservierungssystem
+// Lokal: SQLite (dateibasiert, sofort lauffähig).
+// Produktion: provider auf "postgresql" ändern + DATABASE_URL setzen.
+// Hinweis: SQLite kennt keine nativen Enums → Status/Rollen als String mit
+// dokumentierten Werten (validiert in den DTOs via zod).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/// Mitarbeiter-/Adminkonten für Dashboard & App.
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  role         String   @default("STAFF") // "ADMIN" | "STAFF"
+  passwordHash String
+  refreshHash  String?  // Hash des aktuell gültigen Refresh-Tokens (einfache Single-Session)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+/// Globale Restaurant-Einstellungen (Singleton-Zeile, id = "default").
+model RestaurantSettings {
+  id                      String   @id @default("default")
+  // Öffnungszeiten je Wochentag (0=So..6=Sa) als JSON:
+  // { "0": [{ "open": 720, "close": 1320 }], "1": [], ... }  (Minuten ab Mitternacht)
+  openingHours            Json
+  slotIntervalMin         Int      @default(30)
+  seatingDurationMin      Int      @default(120)
+  lastSeatingBeforeCloseMin Int    @default(30)
+  maxConcurrentCapacity   Int      @default(40)
+  bookingWindowDays       Int      @default(60)
+  minPartySize            Int      @default(1)
+  maxPartySize            Int      @default(12)
+  updatedAt               DateTime @updatedAt
+}
+
+/// Tische des Restaurants (für Tischplan & spätere Zuweisung).
+model Table {
+  id           String        @id @default(cuid())
+  name         String
+  capacity     Int
+  positionX    Float         @default(0)
+  positionY    Float         @default(0)
+  shape        String        @default("square") // "round" | "square" | "rect"
+  area         String        @default("Restaurant")
+  status       String        @default("available") // "available" | "inactive"
+  reservations Reservation[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+/// Gäste-Reservierungen.
+model Reservation {
+  id                String   @id @default(cuid())
+  reservationNumber String   @unique
+  firstName         String
+  lastName          String
+  email             String
+  phone             String
+  date              String   // "YYYY-MM-DD"
+  time              String   // "HH:MM"
+  guestCount        Int
+  notes             String?
+  status            String   @default("confirmed") // confirmed | pending | seated | cancelled
+  assignedTable     Table?   @relation(fields: [assignedTableId], references: [id])
+  assignedTableId   String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([date])
+  @@index([status])
+}

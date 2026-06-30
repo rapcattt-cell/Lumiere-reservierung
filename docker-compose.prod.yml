@@ -1,0 +1,47 @@
+# Produktions-Setup mit automatischem HTTPS (Caddy) + dauerhaftem Datenspeicher.
+# Vorher in .env setzen: DOMAIN, JWT_ACCESS_SECRET, JWT_REFRESH_SECRET,
+# SEED_ADMIN_EMAIL, SEED_ADMIN_PASSWORD.
+#
+# Starten:  docker compose -f docker-compose.prod.yml up -d --build
+
+services:
+  app:
+    build: .
+    image: lumiere-reservierung
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      # DB auf separatem Pfad /data, damit das Volume nicht schema.prisma/migrations überlagert.
+      DATABASE_URL: "file:/data/prod.db"
+      JWT_ACCESS_SECRET: "${JWT_ACCESS_SECRET:?in .env setzen}"
+      JWT_REFRESH_SECRET: "${JWT_REFRESH_SECRET:?in .env setzen}"
+      ACCESS_TOKEN_TTL: "15m"
+      REFRESH_TOKEN_TTL: "7d"
+      SEED_ADMIN_EMAIL: "${SEED_ADMIN_EMAIL:-admin@lumiere.test}"
+      SEED_ADMIN_PASSWORD: "${SEED_ADMIN_PASSWORD:?in .env setzen}"
+      SEED_STAFF_EMAIL: "${SEED_STAFF_EMAIL:-staff@lumiere.test}"
+      SEED_STAFF_PASSWORD: "${SEED_STAFF_PASSWORD:-staff1234}"
+      # SEED_DEMO bleibt aus → keine Demo-Buchungen im Echtbetrieb.
+    volumes:
+      - reservierung-data:/data   # Datenbank überlebt Updates/Neustarts
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAIN: "${DOMAIN:?Domain in .env setzen, z. B. reservierung.dein-restaurant.de}"
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      - app
+    restart: unless-stopped
+
+volumes:
+  reservierung-data:
+  caddy-data:
+  caddy-config:

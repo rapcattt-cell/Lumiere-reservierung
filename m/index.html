@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+  <title>Lumière Verwaltung</title>
+  <meta name="theme-color" content="#14130f" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <!-- iOS: als App zum Home-Bildschirm -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Lumière" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="m.css?v=1" />
+</head>
+<body>
+
+  <!-- ===== Login ===== -->
+  <section id="login" class="login" hidden>
+    <form class="login-card" id="loginForm" novalidate>
+      <div class="login-brand">Lumi<span>è</span>re</div>
+      <p class="login-sub">Verwaltung — Anmeldung</p>
+      <label for="email">E-Mail</label>
+      <input id="email" type="email" autocomplete="username" inputmode="email" value="admin@lumiere.test" />
+      <label for="password">Passwort</label>
+      <input id="password" type="password" autocomplete="current-password" value="admin1234" />
+      <p class="login-err" id="loginErr"></p>
+      <button type="submit" class="btn btn-primary btn-block" id="loginBtn">Anmelden</button>
+    </form>
+  </section>
+
+  <!-- ===== App ===== -->
+  <div id="app" class="app" hidden>
+    <header class="appbar">
+      <div class="appbar-title" id="screenTitle">Heute</div>
+      <button class="appbar-btn" id="logoutBtn" aria-label="Abmelden">⏻</button>
+    </header>
+
+    <main class="screen" id="screen"></main>
+
+    <nav class="tabbar">
+      <button class="tab active" data-screen="today"><span class="tab-ico">▦</span><span>Heute</span></button>
+      <button class="tab" data-screen="plan"><span class="tab-ico">⌗</span><span>Tische</span></button>
+      <button class="tab" data-screen="settings"><span class="tab-ico">⚙</span><span>Einstellungen</span></button>
+    </nav>
+  </div>
+
+  <!-- Aktions-Sheet (von unten) -->
+  <div id="sheet" class="sheet" hidden>
+    <div class="sheet-backdrop" data-close></div>
+    <div class="sheet-card" role="dialog" aria-modal="true">
+      <div class="sheet-handle"></div>
+      <div id="sheetBody"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="m.js?v=1"></script>
+</body>
+</html>
