@@ -45,7 +45,7 @@ export function createApp() {
         if (config.env !== "production") return cb(null, true);
         // Produktion: nur explizit erlaubte Origins (oder Requests ohne Origin, z. B. curl).
         if (!origin || config.corsOrigins.includes(origin)) return cb(null, true);
-        cb(new Error(`CORS: Origin nicht erlaubt: ${origin}`));
+        cb(null, false);
       },
       credentials: true,
     }),
