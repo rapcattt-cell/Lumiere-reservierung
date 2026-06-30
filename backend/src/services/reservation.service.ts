@@ -5,6 +5,7 @@ import { conflict, badRequest, notFound } from "../utils/httpError";
 import { checkBookable } from "./availability.service";
 import { getSettings } from "./settings.service";
 import { emitChange } from "../events";
+import { sendReservationEmails } from "./mail.service";
 import { hhmmToMin } from "../utils/availability";
 import type { CreateReservationInput, UpdateReservationInput } from "../dtos/reservation.dto";
 
@@ -46,6 +47,8 @@ export async function createReservation(input: CreateReservationInput) {
         },
       });
       emitChange({ entity: "reservation", action: "created", date: created.date });
+      // Bestätigungs-/Benachrichtigungs-Mails: fire-and-forget, darf die Buchung nie blockieren.
+      void sendReservationEmails(created);
       return created;
     } catch (e) {
       if (e instanceof Prisma.PrismaClientKnownRequestError && e.code === "P2002") continue;

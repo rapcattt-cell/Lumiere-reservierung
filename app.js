@@ -8,8 +8,8 @@
  *   • DE/EN-Umschaltung & Dark/Light-Theme
  * ========================================================================== */
 
-import { RESTAURANT, SETTINGS, SEED_RESERVATIONS } from "./data.js?v=8";
-import * as api from "./api.js?v=8";
+import { RESTAURANT, SETTINGS, SEED_RESERVATIONS } from "./data.js?v=9";
+import * as api from "./api.js?v=9";
 
 /* ---------------------------------------------------------------------------
  * 1) Internationalisierung (DE/EN)
@@ -44,7 +44,7 @@ const I18N = {
     "g.submit": "Reservierung bestätigen",
     "g.summary": "Ihre Auswahl",
     "ok.title": "Reservierung bestätigt",
-    "ok.sub": "Wir freuen uns auf Ihren Besuch. Eine Bestätigung wurde (simuliert) versendet.",
+    "ok.sub": "Wir freuen uns auf Ihren Besuch. Sie erhalten in Kürze eine Bestätigung per E-Mail.",
     "ok.number": "Reservierungsnummer",
     "ok.new": "Weitere Reservierung",
     "err.required": "Bitte ausfüllen.",
@@ -89,7 +89,7 @@ const I18N = {
     "g.submit": "Confirm reservation",
     "g.summary": "Your selection",
     "ok.title": "Reservation confirmed",
-    "ok.sub": "We look forward to your visit. A confirmation has been (simulated) sent.",
+    "ok.sub": "We look forward to your visit. You will receive a confirmation by email shortly.",
     "ok.number": "Reservation number",
     "ok.new": "New reservation",
     "err.required": "Required.",

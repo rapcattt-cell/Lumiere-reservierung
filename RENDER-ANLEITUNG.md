@@ -49,6 +49,9 @@ Render holt sich den Code aus einem GitHub-Repository.
    | `SEED_ADMIN_EMAIL` | deine Chef-E-Mail |
    | `SEED_ADMIN_PASSWORD` | ein starkes Passwort |
    - **PORT nicht setzen** — das macht Render selbst, die App nutzt es automatisch.
+   - **E-Mail-Versand** (optional, aber empfohlen) — siehe Abschnitt „E-Mail-Versand
+     einrichten" weiter unten. Ohne diese Variablen läuft alles weiter, es werden nur
+     keine Bestätigungs-Mails verschickt.
 6. **Persistenter Speicher** (sehr wichtig, sonst sind Reservierungen nach Updates weg):
    Abschnitt **Disks** → **Add Disk**:
    - **Name:** `data`
@@ -90,6 +93,35 @@ Die Datenbank auf dem Disk bleibt erhalten.
 Render → Service → **Disks** → der Speicher kann sich über Render sichern lassen,
 oder per `render`-CLI die Datei `/data/prod.db` herunterladen. Zusätzlich kannst du
 über das Dashboard regelmäßig Reservierungen exportieren (Listenansicht).
+
+---
+
+## E-Mail-Versand einrichten (SMTP)
+
+Pro Buchung verschickt das System zwei Mails: eine **Bestätigung an den Gast** und
+(optional) eine **Benachrichtigung an das Restaurant**. Versendet wird über **SMTP** —
+funktioniert mit jedem Postfach (IONOS, Strato, Gmail, Mailgun, Resend-SMTP …).
+
+**So geht's:** Die SMTP-Zugangsdaten deines Mailpostfachs bereithalten und in Render
+unter **Settings → Environment → Add** eintragen:
+
+| Key | Beispiel | Bedeutung |
+|---|---|---|
+| `SMTP_HOST` | `smtp.ionos.de` | SMTP-Server des Anbieters |
+| `SMTP_PORT` | `587` | `587` (STARTTLS) oder `465` (SSL) |
+| `SMTP_SECURE` | `false` | `true` **nur** bei Port 465 |
+| `SMTP_USER` | `reservierung@dein-restaurant.de` | Postfach-Benutzer |
+| `SMTP_PASS` | *(Passwort)* | Postfach-Passwort |
+| `MAIL_FROM` | `Lumière <reservierung@dein-restaurant.de>` | Absender (fällt sonst auf `SMTP_USER` zurück) |
+| `RESTAURANT_NOTIFY_EMAIL` | `info@dein-restaurant.de` | wohin die Benachrichtigung geht (leer = keine) |
+| `RESTAURANT_NAME` | `Lumière` | Name in der Mail (Standard: „Lumière") |
+
+- **Ohne `SMTP_HOST`** ist der Versand inaktiv — Buchungen funktionieren weiter, es
+  gehen nur keine Mails raus (im Log: „Versand übersprungen").
+- Viele Anbieter verlangen, dass `MAIL_FROM` zum Postfach passt (sonst landet die Mail
+  im Spam oder wird abgelehnt). Im Zweifel `MAIL_FROM = SMTP_USER`.
+- Nach dem Speichern deployt Render neu; danach eine Test-Reservierung machen und im
+  Render-Log auf „Gast-Bestätigung gesendet" prüfen.
 
 ---
 
